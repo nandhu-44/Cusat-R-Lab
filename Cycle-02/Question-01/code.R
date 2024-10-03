@@ -1,16 +1,13 @@
-# Load the iris dataset
-data(iris)
+# Using the ggplot2 package
+library(ggplot2)
 
-# Set the output to a PNG file with specified dimensions and resolution
-png(file = "sepal_petal_length_scatter.png", width = 10, height = 6, units = "in", res = 300)
+# Example data
+data <- data.frame(
+  category = factor(c("A", "B", "C", "A", "B", "C")),
+  value = c(4, 3, 8, 6, 5, 9)
+)
 
-# Create a scatterplot of Sepal Length vs. Petal Length from the iris dataset
-plot(x = iris$Sepal.Length, y = iris$Petal.Length,
-     xlab = "Sepal Length (cm)",
-     ylab = "Petal Length (cm)",
-     main = "Sepal Length vs. Petal Length Scatterplot",
-     col = "dodgerblue", 
-     pch = 16)
-
-# Turn off the device to save the file
-dev.off()
+# Plot the data using the factor levels
+ggplot(data, aes(x = category, y = value)) +
+  geom_bar(stat = "identity") + xlab("X labels") + 
+  ylab("Y labels") 
